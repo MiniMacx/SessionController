@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="DeliverySession" type="DeliverySessionCreationType"/>
+    <xsd:complexType name="DeliverySessionCreationType">
+        <xsd:sequence>
+            <xsd:element name="DeliverySessionId" type="xsd:unsignedInt"/>
+            <xsd:element name="Action" type="ActionType"/>
+            <xsd:choice>
+                <xsd:element name="TMGIPool" type="xsd:string"/>
+                <xsd:element name="TMGI" type="xsd:string"/>
+            </xsd:choice>
+            <xsd:element name="StartTime" type="xsd:unsignedInt" minOccurs="0"/>
+            <xsd:element name="StopTime" type="xsd:unsignedInt" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="Version" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:simpleType name="ActionType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Start"/>
+            <xsd:enumeration value="Stop"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>
